@@ -1,5 +1,5 @@
 import requests
-from config import api_key
+api_key='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'
 url = "https://router.huggingface.co/models/Salesforce/blip-image-captioning-base"
 headers={
     "Authorization":f"Bearer {api_key}"
