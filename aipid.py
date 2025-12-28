@@ -1,8 +1,8 @@
 import requests
 from config import api_key
-url = "https://router.huggingface.co/models/Salesforce/blip-image-captioning-base"
+url = ""
 headers={
-    "Authorization":f"Bearer {api_key}"
+
 }
 def captioning_image():
     file_name="tree.jpg"
