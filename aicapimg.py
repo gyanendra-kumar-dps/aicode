@@ -38,3 +38,4 @@ def main():
         choic=input("Enter(1,2,3,4):")
         if choic==1:
             cap=trunc(cap,5)
+main()
