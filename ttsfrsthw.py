@@ -49,7 +49,7 @@ def transcribe(data, rate, width):
 
     except sr.RequestError as e:
 
-        print(f"error{e}")
+        print(f"error run the script again{e}")
 def plot_waveform(data, rate):
     samples = np.frombuffer(data, dtype=np.int16)
     time_axis = np.linspace(0, len(samples) / rate, len(samples))
