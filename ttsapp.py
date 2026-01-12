@@ -31,17 +31,23 @@ def main():
         user_input_count+=1
         if text.lower()=='exit':
             speak(engine,"Goodbye")
-            json_to_write[f'input{user_input_count}']=text
-            json_to_write[f'output{user_input_count}']="Goodbye"
+            joutput={}
+            joutput[f'input{user_input_count}']=text
+            joutput[f'output{user_input_count}']="Goodbye"
+            json_to_write[f'convo{user_input_count}']=joutput
             break
         elif text.lower()=='sample':
             sample=get_samples()
-            json_to_write[f'input{user_input_count}']=text
-            json_to_write[f'output{user_input_count}']=sample
+            joutput={}
+            joutput[f'input{user_input_count}']=text
+            joutput[f'output{user_input_count}']=sample
+            json_to_write[f'convo{user_input_count}']=joutput
             speak(engine,sample)
         else:
-            json_to_write[f'input{user_input_count}']=text
-            json_to_write[f'output{user_input_count}']=text
+            joutput={}
+            joutput[f'input{user_input_count}']=text
+            joutput[f'output{user_input_count}']=text
+            json_to_write[f'convo{user_input_count}']=joutput
             speak(engine,text)
     with open('ttsapp.json','w') as f:
         f.write(str(json_to_write))
