@@ -1,5 +1,6 @@
 import pyttsx3
 import random
+json_to_write={}
 def setup_tts():
     engine=pyttsx3.init()
     engine.setProperty("rate", 150)
@@ -24,14 +25,25 @@ def main():
     else:
         print("audio not audible")
     speak(engine, "type something")
+    user_input_count=0
     while True:
         text = input("Type:").strip()
+        user_input_count+=1
         if text.lower()=='exit':
             speak(engine,"Goodbye")
+            json_to_write[f'input{user_input_count}']=text
+            json_to_write[f'output{user_input_count}']="Goodbye"
             break
         elif text.lower()=='sample':
-            speak(engine,get_samples())
+            sample=get_samples()
+            json_to_write[f'input{user_input_count}']=text
+            json_to_write[f'output{user_input_count}']=sample
+            speak(engine,sample)
         else:
+            json_to_write[f'input{user_input_count}']=text
+            json_to_write[f'output{user_input_count}']=text
             speak(engine,text)
+    with open('ttsapp.json','w') as f:
+        f.write(str(json_to_write))
 if __name__=='__main__':
     main()
