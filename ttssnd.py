@@ -73,7 +73,6 @@ def plot_both(stats1, stats2, rate):
     ax2.plot(t2, stats2['samples'], color='red', linewidth=0.5)
     ax2.set_title(f"Recording 2 (Modified) - Duration: {stats2['duration']:.2f}s, Avg: {stats2['avg_volume']:.0f}")
     ax2.set_xlabel("Time (seconds)")
-    
     ax2.set_ylabel("Amplitude")
     ax2.grid(True, alpha=0.3)
     ax2.set_ylim(-35000, 35000)

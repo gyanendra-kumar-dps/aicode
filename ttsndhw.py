@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import speech_recognition as sr
 from speech_recognition import AudioData
-stop_event = threading.Event()
+stop_event=threading.Event()
 def wait_for_enter():
     input()
     stop_event.set()
