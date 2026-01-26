@@ -1,6 +1,10 @@
 import speech_recognition as sr
 import pyttsx3
 from googletrans import Translator
+from datetime import datetime
+import os
+user={}
+usercount=0
 def speak(text, language="en"):
     engine = pyttsx3.init()
     engine.setProperty('rate', 150)
@@ -44,11 +48,16 @@ def display_language_options():
     language_dict = {"1":"hi","2":"ta","3":"te","4":"bn","5":"mr","6":"gu","7":"ml","8":"pa"}
     return language_dict.get(choice, "es")
 def main():
-    target_language = display_language_options()
-    original_text = speech_to_text()
-    if original_text:
-        translated_text = translate_text(original_text, target_language=target_language)
-        speak(translated_text, language="en")
-        print("translation done")
+    while True:
+        globals()['usercount']+=1
+        target_language = display_language_options()
+        original_text = input("Enter your text:")
+        if original_text:
+            translated_text = translate_text(original_text, target_language=target_language)
+            os.system(f'say {translated_text}')
+            print("translation done")
+        user[f'user{globals()['usercount']}']=original_text
+        with open('ttsapp.json','w') as f:
+            f.write(f'{user}'.replace("'",'"'))
 if __name__=="__main__":
     main()
