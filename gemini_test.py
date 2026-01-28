@@ -3,7 +3,7 @@ from config import gemini_api_key
 client=genai.Client(api_key=gemini_api_key)
 def generate(prompt):
     res=client.models.generate_content(
-        model='gemini-2.0-flash',
+        model='gemma-3-4b',
         contents=prompt
     )
     return res.text
